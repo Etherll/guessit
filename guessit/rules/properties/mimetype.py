@@ -40,7 +40,7 @@ class Mimetype(CustomRule):
     dependency = Processors
 
     def when(self, matches, context):
-        mime, _ = mime_guess.guess_type(matches.input_string)
+        mime= mime_guess.guess_type(matches.input_string)
         return mime
 
     def then(self, matches, when_response, context):
