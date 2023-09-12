@@ -3,7 +3,7 @@
 """
 mimetype property
 """
-import mimetypes
+import mime_guess
 
 from rebulk import Rebulk, CustomRule, POST_PROCESS
 from rebulk.match import Match
@@ -40,7 +40,7 @@ class Mimetype(CustomRule):
     dependency = Processors
 
     def when(self, matches, context):
-        mime, _ = mimetypes.guess_type(matches.input_string, strict=False)
+        mime, _ = mime_guess.guess_type(matches.input_string)
         return mime
 
     def then(self, matches, when_response, context):
